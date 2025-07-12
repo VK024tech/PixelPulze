@@ -6,8 +6,17 @@
   --color-gray: #17181B;
   --color-black: #000000;
   --color-white: #FCFCFC;
+  --color-pale-white: #efefef;
   --color-brand: #76FF03;
-  --color-buttonBg: #414143;
+  --color-buttonBg-dark: #414143;
+  --color-buttonBg-light: #ebebeb;
+}
+
+
+::view-transition-old(root),
+::view-transition-new(root){
+  animation: none;
+  mix-blend-mode: normal;
 }
 
 

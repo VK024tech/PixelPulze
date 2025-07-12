@@ -1,11 +1,16 @@
-import Header from "./assets/Components/Header";
+import Header from "./Components/Header";
+import HeroSection from "./Components/HeroSection";
+import { ThemeContextProvider } from "./Contexts/Theme";
 
 function App() {
   return (
     <>
-      <div className="bg-black w-screen h-screen">
-        <Header />
-      </div>
+      <ThemeContextProvider>
+        <div className="dark:bg-black bg-pale-white w-screen h-screen">
+          <Header />
+          <HeroSection />
+        </div>
+      </ThemeContextProvider>
     </>
   );
 }
