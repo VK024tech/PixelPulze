@@ -5,7 +5,7 @@ import {
   MoonIcon,
   SunIcon,
   Bars3Icon,
-  XMarkIcon,
+  XMarkIcon
 } from "@heroicons/react/24/outline";
 import { div } from "motion/react-client";
 import { flushSync } from "react-dom";
