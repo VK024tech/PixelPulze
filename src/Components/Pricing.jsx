@@ -1,18 +1,45 @@
 import React from "react";
 import { CheckCircleIcon, HandThumbDownIcon } from "@heroicons/react/24/solid";
-
+import { useAnimate, motion } from "motion/react";
 function Pricing() {
   return (
     <div
       id="Pricing"
       className=" text-gray dark:text-white my-5 p-6 w-full flex flex-col gap-2 justify-center items-center "
     >
-      <div className="text-5xl font-medium text-center">
-        The ultimate AI art
-        Solution
-      </div>
+      <motion.div
+        initial={{ opacity: 0, y: 100 }}
+        whileInView={{
+          opacity: 1,
+          y: 0,
+        }}
+        viewport={{
+          once: true,
+        }}
+        transition={{
+          duration: 1,
+          ease: "easeInOut",
+        }}
+        className="text-5xl font-medium text-center"
+      >
+        The ultimate AI art Solution
+      </motion.div>
       <div className="flex justify-around w-full max-w-6xl">
-        <div className="flex flex-col w-fit justify-center items-center mt-10 border-2 p-8 text-gray-600 dark:text-gray-300 rounded-md border-gray-400/55 shadow-md shadow-gray/10">
+        <motion.div
+          initial={{ opacity: 0, y: 100 }}
+          whileInView={{
+            opacity: 1,
+            y: 0,
+          }}
+          viewport={{
+            once: true,
+          }}
+          transition={{
+            duration: 1,
+            ease: "backInOut",
+          }}
+          className="flex flex-col w-fit justify-center items-center mt-10 border-2 p-8 text-gray-600 dark:text-gray-300 rounded-md border-gray-400/55 shadow-md shadow-gray/10"
+        >
           <div className="text-3xl  font-semibold text-gray-600 dark:text-gray-300">
             Mid Journey
           </div>
@@ -37,8 +64,23 @@ function Pricing() {
               (upto 200 images/month)
             </li>
           </ul>
-        </div>
-        <div className="animate-rotate-border bg-conic/[from_var(--border-angle)] from-pale-white   via-brand/70 from-40% via-80% to-100% to-pale-white  mt-10 rounded-md p-px">
+        </motion.div>
+        <motion.div
+          initial={{ opacity: 0, y: 100 }}
+          whileInView={{
+            opacity: 1,
+            y: 0,
+          }}
+          viewport={{
+            once: true,
+          }}
+          transition={{
+            duration: 1,
+            ease: "backInOut",
+            delay: 0.2,
+          }}
+          className="animate-rotate-border bg-conic/[from_var(--border-angle)] from-pale-white   via-brand/70 from-40% via-80% to-100% to-pale-white  mt-10 rounded-md p-px"
+        >
           <div className="flex flex-col w-fit justify-center bg-pale-white dark:bg-black rounded-md items-center    p-8  shadow-xl shadow-gray/20">
             <div className="text-3xl  font-semibold  text-gray dark:text-white">
               Pixel Pulze
@@ -76,8 +118,22 @@ function Pricing() {
               No hidden fees
             </div>
           </div>
-        </div>
-        <div className="flex flex-col w-fit justify-center items-center mt-10 border-2 p-8 rounded-md text-gray-600 dark:text-gray-300 border-gray-400/55 shadow-md shadow-gray/10">
+        </motion.div>
+        <motion.div
+          initial={{ opacity: 0, y: 100 }}
+          whileInView={{
+            opacity: 1,
+            y: 0,
+          }}
+          viewport={{
+            once: true,
+          }}
+          transition={{
+            duration: 1,
+            ease: "backInOut",
+          }}
+          className="flex flex-col w-fit justify-center items-center mt-10 border-2 p-8 rounded-md text-gray-600 dark:text-gray-300 border-gray-400/55 shadow-md shadow-gray/10"
+        >
           <div className="text-3xl  font-semibold text-gray-600 dark:text-gray-300">
             Dall-e 3
           </div>
@@ -101,12 +157,25 @@ function Pricing() {
               (Limited images)
             </li>
           </ul>
-        </div>
+        </motion.div>
       </div>
-      <div className="my-2 text-gray-400 dark:text-gray-500">
+      <motion.div
+        initial={{ opacity: 0 }}
+        whileInView={{
+          opacity: 1,
+        }}
+        viewport={{
+          once: true,
+        }}
+        transition={{
+          duration: 1,
+          ease: "linear",
+        }}
+        className="my-2 text-gray-400 dark:text-gray-500"
+      >
         Note: Prices are approximate and subject to change; verify current
         competitor pricing for accuracy.
-      </div>
+      </motion.div>
     </div>
   );
 }

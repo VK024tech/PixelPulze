@@ -129,7 +129,22 @@ export default function Header() {
 
   return (
     <>
-      <header
+      <motion.header
+        initial={{opacity:0,
+          y: -50
+        }}
+        whileInView={{
+          opacity:1,
+          y: 0
+        }}
+        viewport={{
+          once: true
+        }}
+        transition={{
+          duration: 0.5,
+          ease: 'backInOut'
+        }}
+
         className={`${
           windowWidth < 800
             ? "z-100 sticky"
@@ -140,7 +155,7 @@ export default function Header() {
           <a>PixelPulze</a>
         </div>
         {navbar()}
-      </header>
+      </motion.header>
       <motion.div
         animate={
           burgerMenu

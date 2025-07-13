@@ -7,28 +7,75 @@ import { easeInOut, motion } from "motion/react";
 
 function HeroSection() {
   const { windowWidth } = useContext(ThemeContext);
-    const { demo, setDemo } = useContext(ThemeContext);
+  const { demo, setDemo } = useContext(ThemeContext);
   return (
     <div id="Home" className="">
       <div className={` ${windowWidth < 800 ? "h-0" : "h-20"}`}></div>
 
       <div className="p-24 text-gray dark:text-white">
         <div className="text-center  mx-auto max-w-4xl">
-          <div className=" sm:text-4xl md:text-7xl leading-tight font-semibold">
+          <motion.div
+            initial={{ opacity: 0, y: 150, scaleY: 0.8 }}
+            whileInView={{
+              opacity: 1,
+              y: 0,
+              scaleY: 1,
+            }}
+            viewport={{
+              once: true,
+            }}
+            transition={{
+              duration: 1,
+              ease: "easeInOut",
+            }}
+            className=" sm:text-4xl md:text-7xl leading-tight font-semibold"
+          >
             AFFORDABLE AI ART AT <br />{" "}
             <span className="font-serif font-extralight">YOUR FINGERTIPS</span>
-          </div>
-          <div className="mt-8 p-2 max-w-md mx-auto sm:text-xl md:text-lg">
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: 180, scaleY: 0.8 }}
+            whileInView={{
+              opacity: 1,
+              y: 0,
+              scaleY: 1,
+            }}
+            viewport={{
+              once: true,
+            }}
+            transition={{
+              duration: 1,
+              ease: "backInOut",
+              delay: 0.2,
+            }}
+            className="mt-8 p-2 max-w-md mx-auto sm:text-xl md:text-lg"
+          >
             Create breathtaking images for just $0.012/Image or Rs.1/Image with
             ease. Skip subscriptions, pay just for the images you create.
             {/* Recharge easily and create limitless visuals with PixelPulze. */}
             {/* <br /> */}
-          </div>
-          <div className="flex justify-center gap-4 mt-10">
-            <motion.div
-            onClick={()=>{
-              setDemo(true)
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: 200, scaleY: 0.8 }}
+            whileInView={{
+              opacity: 1,
+              y: 0,
+              scaleY: 1,
             }}
+            viewport={{
+              once: true,
+            }}
+            transition={{
+              duration: 1,
+              ease: "backInOut",
+              delay: 0.4,
+            }}
+            className="flex justify-center gap-4 mt-10"
+          >
+            <motion.div
+              onClick={() => {
+                setDemo(true);
+              }}
               whileHover={{
                 translateY: "-10px",
               }}
@@ -52,7 +99,7 @@ function HeroSection() {
               Sign Up
               <ArrowLongRightIcon className=" size-4.5 " />
             </motion.div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </div>
