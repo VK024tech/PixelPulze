@@ -30,7 +30,8 @@ export default function Header() {
           key={curr}
           className={`${
             windowWidth < 800 ? "w-fit mx-auto " : ""
-          } group  relative py-2 px-4 cursor-pointer  rounded-md`}
+          } group  relative py-2 px-4 cursor-pointer  rounded-md `}
+          href={`#${curr}`}
         >
           <span className="relative z-10">{curr}</span>
           <span className="absolute  inset-0 scale-0 opacity-20 dark:bg-buttonBg-dark bg-buttonBg-light rounded-lg transition-all duration-300 ease-out group-hover:opacity-100 group-hover:scale-100 origin-center"></span>
@@ -132,8 +133,8 @@ export default function Header() {
         className={`${
           windowWidth < 800
             ? "z-100 sticky"
-            : "fixed right-[50%] top-4 translate-x-[50%] rounded-md "
-        }   dark:shadow-sm/90 shadow-md/25 shadow-gray-500  items-center  flex gap-12 justify-between px-2 md:px-8 dark:bg-gray dark:text-white bg-white text-gray`}
+            : "fixed right-[50%] top-4 translate-x-[50%] rounded-md z-100"
+        }   dark:shadow-sm/90 shadow-md/25 shadow-gray-500  items-center   flex gap-12 justify-between px-2 md:px-8 dark:bg-gray dark:text-white bg-white text-gray`}
       >
         <div className="p-1 mx-4">
           <a>PixelPulze</a>

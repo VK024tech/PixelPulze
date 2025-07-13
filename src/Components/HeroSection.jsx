@@ -9,7 +9,7 @@ function HeroSection() {
   const { windowWidth } = useContext(ThemeContext);
 
   return (
-    <div className="" >
+    <div id="Home" className="" >
 
       <div className={` ${windowWidth < 800 ? "h-0" : "h-20"}`}></div>
       <div className="p-24 text-gray dark:text-white">

@@ -10,8 +10,16 @@
   --color-brand: #76FF03;
   --color-buttonBg-dark: #414143;
   --color-buttonBg-light: #ebebeb;
-}
 
+  --animate-rotate-border: border-rotate 12s linear infinite;
+
+  @keyframes border-rotate{
+    to {
+      --border-angle: 360deg
+    }
+  }
+
+ 
 
 ::view-transition-old(root),
 ::view-transition-new(root){
@@ -23,3 +31,8 @@
     display: none;
 }
 
+@property --border-angle{
+  syntax: '<angle>';
+  inherits: false;
+  initial-value: 0deg;
+}
