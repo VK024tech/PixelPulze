@@ -9,15 +9,16 @@ function HeroSection() {
   const { windowWidth } = useContext(ThemeContext);
 
   return (
-    <div>
+    <div className="" >
+
       <div className={` ${windowWidth < 800 ? "h-0" : "h-20"}`}></div>
       <div className="p-24 text-gray dark:text-white">
         <div className="text-center  mx-auto max-w-4xl">
-          <div className=" text-7xl leading-tight font-semibold">
+          <div className=" sm:text-4xl md:text-7xl leading-tight font-semibold">
             AFFORDABLE AI ART AT <br />{" "}
             <span className="font-serif font-extralight">YOUR FINGERTIPS</span>
           </div>
-          <div className="mt-8 p-2 max-w-md mx-auto text-lg">
+          <div className="mt-8 p-2 max-w-md mx-auto sm:text-xl md:text-lg">
             Create breathtaking images for just $0.012/Image or Rs.1/Image with
             ease. Skip subscriptions, pay just for the images you create.
             {/* Recharge easily and create limitless visuals with PixelPulze. */}
