@@ -1,25 +1,18 @@
-import Carousel from "./Components/Carousel";
-import Footer from "./Components/Footer";
-import Header from "./Components/Header";
-import HeroSection from "./Components/HeroSection";
-import Pricing from "./Components/Pricing";
-import Support from "./Components/Support";
-import { ThemeContextProvider } from "./Contexts/Theme";
+import { BrowserRouter, Route, Router, Routes } from "react-router-dom";
+
+import Home from "./Home";
+import PrivacyPolicy from "./Components/PrivacyPolicy";
+import Termsandconditions from "./Components/Termsandconditions";
 
 function App() {
   return (
-    <>
-      <ThemeContextProvider>
-        <div className="dark:bg-black bg-pale-white max-w-screen  ">
-          <Header />
-          <HeroSection />
-          <Carousel />
-          <Pricing />
-          <Support/>
-          <Footer/>
-        </div>
-      </ThemeContextProvider>
-    </>
+    <div className="dark:bg-black bg-pale-white max-w-screen  ">
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/Privacy-Policy" element={<PrivacyPolicy />} />
+        <Route path="/Terms-and-Conditions" element={<Termsandconditions />} />
+      </Routes>
+    </div>
   );
 }
 

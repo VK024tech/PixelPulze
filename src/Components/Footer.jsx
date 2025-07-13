@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 function Footer() {
   return (
@@ -12,12 +13,12 @@ function Footer() {
         </div>
 
         <div className="flex flex-col gap-2 text-right text-sm">
-          <a className="hover:underline" href="">
+          <Link className="hover:underline" to="/Privacy-Policy">
             Privacy Policy
-          </a>
-          <a className="hover:underline" href="">
+          </Link>
+          <Link className="hover:underline" to="/Terms-and-Conditions">
             Terms And Condition
-          </a>
+          </Link>
         </div>
       </div>
       <hr className="text-gray-300 dark:text-gray-600" />
