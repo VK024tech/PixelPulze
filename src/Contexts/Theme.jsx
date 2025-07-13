@@ -5,6 +5,7 @@ const ThemeContext = createContext();
 
 const ThemeContextProvider = ({ children }) => {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const [demo,setDemo] = useState(false)
 
   /////////////////////resize width//////////////////////////
   const handleResize = () => {
@@ -82,6 +83,8 @@ const ThemeContextProvider = ({ children }) => {
     setTheme,
     ref,
     toggleDarkMode,
+    demo,
+    setDemo
   };
 
   return (

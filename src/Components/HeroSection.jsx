@@ -7,11 +7,11 @@ import { easeInOut, motion } from "motion/react";
 
 function HeroSection() {
   const { windowWidth } = useContext(ThemeContext);
-
+    const { demo, setDemo } = useContext(ThemeContext);
   return (
-    <div id="Home" className="" >
-
+    <div id="Home" className="">
       <div className={` ${windowWidth < 800 ? "h-0" : "h-20"}`}></div>
+
       <div className="p-24 text-gray dark:text-white">
         <div className="text-center  mx-auto max-w-4xl">
           <div className=" sm:text-4xl md:text-7xl leading-tight font-semibold">
@@ -26,6 +26,9 @@ function HeroSection() {
           </div>
           <div className="flex justify-center gap-4 mt-10">
             <motion.div
+            onClick={()=>{
+              setDemo(true)
+            }}
               whileHover={{
                 translateY: "-10px",
               }}
