@@ -8,10 +8,12 @@ import Support from "./Components/Support";
 import { ThemeContext } from "./Contexts/theme";
 import DemoVideo from "./Components/DemoVideo";
 
-function Home() {
+function LandingPage() {
   const { demo, setDemo } = useContext(ThemeContext);
   return (
-    <div className={`${demo ? "overflow-hidden h-screen" : ""} `}>
+    <div
+      className={`${demo ? "overflow-hidden h-screen" : "overflow-hidden"} `}
+    >
       {demo ? <DemoVideo /> : ""}
       <Header />
       <HeroSection />
@@ -23,4 +25,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default LandingPage;

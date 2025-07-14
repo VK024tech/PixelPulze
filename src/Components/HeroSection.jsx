@@ -12,7 +12,7 @@ function HeroSection() {
     <div id="Home" className="">
       <div className={` ${windowWidth < 800 ? "h-0" : "h-20"}`}></div>
 
-      <div className="p-24 text-gray dark:text-white">
+      <div className=" px-4 pt-14 py-12 pb-8 sm:px-8 sm:py-16 md:px-24 md:py-24  text-gray dark:text-white">
         <div className="text-center  mx-auto max-w-4xl">
           <motion.div
             initial={{ opacity: 0, y: 150, scaleY: 0.8 }}
@@ -28,7 +28,7 @@ function HeroSection() {
               duration: 1,
               ease: "easeInOut",
             }}
-            className=" sm:text-4xl md:text-7xl leading-tight font-semibold"
+            className=" text-3xl sm:text-4xl md:text-7xl leading-tight font-semibold"
           >
             AFFORDABLE AI ART AT <br />{" "}
             <span className="font-serif font-extralight">YOUR FINGERTIPS</span>
@@ -48,7 +48,7 @@ function HeroSection() {
               ease: "backInOut",
               delay: 0.2,
             }}
-            className="mt-8 p-2 max-w-md mx-auto sm:text-xl md:text-lg"
+            className="mt-3 sm:mt-6 md:mt-8 p-2 max-w-md mx-auto text-sm sm:text-xl md:text-lg"
           >
             Create breathtaking images for just $0.012/Image or Rs.1/Image with
             ease. Skip subscriptions, pay just for the images you create.
@@ -70,7 +70,7 @@ function HeroSection() {
               ease: "backInOut",
               delay: 0.4,
             }}
-            className="flex justify-center gap-4 mt-10"
+            className="flex justify-center gap-4 mt-8 sm:mt-8 md:mt-10"
           >
             <motion.div
               onClick={() => {
@@ -82,7 +82,7 @@ function HeroSection() {
               transition={{
                 duration: 0.15,
               }}
-              className="p-4 border-2 w-fit h-fit rounded-2xl flex items-center justify-around gap-2 cursor-pointer"
+              className=" py-2 px-4 md:p-4 border-2 w-fit h-fit rounded-2xl flex items-center justify-around gap-2 cursor-pointer"
             >
               <PlayCircleIcon className="size-4.5 " />
               Watch Demo
@@ -94,7 +94,7 @@ function HeroSection() {
               transition={{
                 duration: 0.15,
               }}
-              className=" p-4 border-2 w-fit h-fit rounded-2xl flex items-center justify-around gap-2 cursor-pointer dark:bg-white bg-gray dark:text-gray text-white"
+              className=" py-2 px-4 md:p-4  border-2 w-fit h-fit rounded-2xl flex items-center justify-around gap-2 cursor-pointer dark:bg-white bg-gray dark:text-gray text-white"
             >
               Sign Up
               <ArrowLongRightIcon className=" size-4.5 " />

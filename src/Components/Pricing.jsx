@@ -5,7 +5,7 @@ function Pricing() {
   return (
     <div
       id="Pricing"
-      className=" text-gray dark:text-white my-5 p-6 w-full flex flex-col gap-2 justify-center items-center "
+      className=" text-gray dark:text-white my-5  p-6 sm:p-6 w-full flex flex-col gap-2 justify-center items-center "
     >
       <motion.div
         initial={{ opacity: 0, y: 100 }}
@@ -20,11 +20,11 @@ function Pricing() {
           duration: 1,
           ease: "easeInOut",
         }}
-        className="text-5xl font-medium text-center"
+        className="text-3xl sm:text-4xl md:text-5xl font-medium text-center"
       >
         The ultimate AI art Solution
       </motion.div>
-      <div className="flex justify-around w-full max-w-6xl">
+      <div className="flex flex-col md:flex-row items-center justify-around w-full max-w-6xl">
         <motion.div
           initial={{ opacity: 0, y: 100 }}
           whileInView={{
@@ -40,12 +40,12 @@ function Pricing() {
           }}
           className="flex flex-col w-fit justify-center items-center mt-10 border-2 p-8 text-gray-600 dark:text-gray-300 rounded-md border-gray-400/55 shadow-md shadow-gray/10"
         >
-          <div className="text-3xl  font-semibold text-gray-600 dark:text-gray-300">
+          <div className=" text-2xl sm:text-3xl  font-semibold text-gray-600 dark:text-gray-300">
             Mid Journey
           </div>
 
           {/* <div className="mt-3 text-center">Unlimited images, No Subscription needed</div> */}
-          <ul className="mt-4 flex flex-col gap-3">
+          <ul className="mt-4 text-sm sm:text-[16px] flex flex-col gap-3">
             <li className="flex gap-2">
               <HandThumbDownIcon className="size-6 text-red-400 my-auto" />{" "}
               $10/month <br />
@@ -82,7 +82,7 @@ function Pricing() {
           className="animate-rotate-border bg-conic/[from_var(--border-angle)] from-pale-white   via-brand/70 from-40% via-80% to-100% to-pale-white  mt-10 rounded-md p-px"
         >
           <div className="flex flex-col w-fit justify-center bg-pale-white dark:bg-black rounded-md items-center    p-8  shadow-xl shadow-gray/20">
-            <div className="text-3xl  font-semibold  text-gray dark:text-white">
+            <div className="text-3xl sm:text-3xl   font-semibold  text-gray dark:text-white">
               Pixel Pulze
             </div>
             <div className="text-gray-800 mt-6 dark:text-gray-200">
@@ -94,7 +94,7 @@ function Pricing() {
             <div className="mt-3 text-center">
               Unlimited images, No Subscription needed
             </div>
-            <ul className="mt-4 flex flex-col gap-3">
+            <ul className="mt-4 text-sm sm:text-[16px] flex flex-col gap-3">
               <li className="flex gap-2">
                 <CheckCircleIcon className="size-6 text-green-400 dark:text-brand my-auto" />{" "}
                 $0.012/Image (~Rs. 1)
@@ -134,11 +134,11 @@ function Pricing() {
           }}
           className="flex flex-col w-fit justify-center items-center mt-10 border-2 p-8 rounded-md text-gray-600 dark:text-gray-300 border-gray-400/55 shadow-md shadow-gray/10"
         >
-          <div className="text-3xl  font-semibold text-gray-600 dark:text-gray-300">
+          <div className=" text-2xl sm:text-3xl  font-semibold text-gray-600 dark:text-gray-300">
             Dall-e 3
           </div>
 
-          <ul className="mt-4 flex flex-col gap-3">
+          <ul className="mt-4 text-sm sm:text-[16px] flex flex-col gap-3">
             <li className="flex gap-2">
               <HandThumbDownIcon className="size-6  text-red-400 my-auto" />{" "}
               $20/month <br />
@@ -171,7 +171,7 @@ function Pricing() {
           duration: 1,
           ease: "linear",
         }}
-        className="my-2 text-gray-400 dark:text-gray-500"
+        className="my-2 text-xs text-center sm:text-[16px] text-gray-400 dark:text-gray-500"
       >
         Note: Prices are approximate and subject to change; verify current
         competitor pricing for accuracy.
