@@ -79,7 +79,7 @@ function Pricing() {
             ease: "backInOut",
             delay: 0.2,
           }}
-          className="animate-rotate-border bg-conic/[from_var(--border-angle)] from-pale-white   via-brand/70 from-40% via-80% to-100% to-pale-white  mt-10 rounded-md p-px"
+          className="animate-rotate-border bg-brand  mt-10 rounded-md p-px"
         >
           <div className="flex flex-col w-fit justify-center bg-pale-white dark:bg-black rounded-md items-center    p-8  shadow-xl shadow-gray/20">
             <div className="text-3xl sm:text-3xl   font-semibold  text-gray dark:text-white">
@@ -88,7 +88,7 @@ function Pricing() {
             <div className="text-gray-800 mt-6 dark:text-gray-200">
               <span className="text-5xl font-semibold text-gray dark:text-white">
                 $0.012
-              </span>{" "}
+              </span>
               /Image
             </div>
             <div className="mt-3 text-center">

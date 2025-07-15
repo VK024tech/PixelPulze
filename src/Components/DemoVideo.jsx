@@ -3,7 +3,7 @@ import { ThemeContext } from "../Contexts/theme";
 import { easeInOut, motion } from "motion/react";
 function DemoVideo() {
   const { demo, setDemo } = useContext(ThemeContext);
-
+     const { windowWidth } = useContext(ThemeContext);
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -35,12 +35,12 @@ function DemoVideo() {
           duration: 1,
           ease: "easeInOut",
         }}
-        className="relative left-[17%] top-[12%]"
+        className="relative   md:left-[17%] top-[26%] sm:top-[10%] md:top-[12%]"
       >
         <iframe
           className="rounded-2xl border-2 border-brand shadow-2xl shadow-brand/20 bg-pale-white dark:bg-black"
-          width="1000"
-          height="562"
+          width={windowWidth <= '768' ? windowWidth : '1000'  }
+          height={windowWidth  <= '768' ? windowWidth/1.5 : '545' }
           src="https://www.youtube.com/embed/csDriucITDE?si=Pct9P0D37mTUgcKF"
           title="YouTube video player"
           frameborder="0"
