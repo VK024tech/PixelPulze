@@ -1,6 +1,7 @@
 import express from "express";
 import { createClient } from "@supabase/supabase-js";
 import "dotenv/config";
+import { createImage } from "../services/imageGenerate.js";
 
 const supabase = createClient(
   process.env.SUPABASE_URL,
@@ -45,9 +46,7 @@ router.post("/signin", async (req, res) => {
   });
 });
 
-router.get("/signout", async (req, res) => {
- 
-
+router.post("/signout", async (req, res) => {
   const { error } = await supabase.auth.signOut();
 
   if (error) {
@@ -55,7 +54,15 @@ router.get("/signout", async (req, res) => {
   }
 
   res.json({
-    msg: 'signout'
+    msg: "signout",
+  });
+});
+
+router.get("/gen", async (req, res) => {
+  const response = await createImage(req.body.prompt);
+
+  res.json({
+    msg: response,
   });
 });
 
