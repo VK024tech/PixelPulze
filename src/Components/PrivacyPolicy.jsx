@@ -5,7 +5,9 @@ function PrivacyPolicy() {
   return (
     <div className="text-gray dark:text-white max-w-3xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
       <div className="flex justify-between items-center">
-        <h1 className="text-2xl sm:text-3xl mb-4">Privacy Policy for Pixel Pulze</h1>
+        <h1 className="text-2xl sm:text-3xl mb-4">
+          Privacy Policy for Pixel Pulze
+        </h1>
         <Link
           to="/"
           className="flex gap-1 cursor-pointer text-sm md:text-[16px] items-center hover:gap-4 transition-all duration-200"

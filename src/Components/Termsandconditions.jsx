@@ -1,15 +1,21 @@
 import React from "react";
-import {
-  ArrowLongLeftIcon,
-} from "@heroicons/react/24/outline";
+import { ArrowLongLeftIcon } from "@heroicons/react/24/outline";
 import { Link } from "react-router-dom";
 
 function Termsandconditions() {
   return (
     <div className="text-gray dark:text-white max-w-3xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
       <div className="flex justify-between items-center">
-        <h1 className="text-2xl sm:text-3xl mb-4">Terms and <br/> Conditions</h1>
-        <Link to='/' className="flex gap-1 text-sm md:text-[16px] cursor-pointer hover:gap-4 transition-all duration-200"><ArrowLongLeftIcon className="size-6"/>Go to Home</Link>
+        <h1 className="text-2xl sm:text-3xl mb-4">
+          Terms and <br /> Conditions
+        </h1>
+        <Link
+          to="/"
+          className="flex gap-1 text-sm md:text-[16px] cursor-pointer hover:gap-4 transition-all duration-200"
+        >
+          <ArrowLongLeftIcon className="size-6" />
+          Go to Home
+        </Link>
       </div>
       <p className="text-[12px] sm:text-sm mb-8">Last Updated: July 13, 2025</p>
       <p className="text-sm sm:text-lg mb-8">

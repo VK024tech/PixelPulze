@@ -4,10 +4,13 @@ import { ThemeContext } from "../Contexts/theme";
 import { PlayCircleIcon } from "@heroicons/react/24/solid";
 import { ArrowLongRightIcon } from "@heroicons/react/24/outline";
 import { easeInOut, motion } from "motion/react";
-
+import { Link } from "react-router-dom";
 function HeroSection() {
   const { windowWidth } = useContext(ThemeContext);
   const { demo, setDemo } = useContext(ThemeContext);
+
+
+
   return (
     <div id="Home" className="">
       <div className={` ${windowWidth < 800 ? "h-0" : "h-20"}`}></div>
@@ -87,7 +90,7 @@ function HeroSection() {
               <PlayCircleIcon className="size-4.5 " />
               Watch Demo
             </motion.div>
-            <motion.div
+            <motion.button
               whileHover={{
                 translateY: "-10px",
               }}
@@ -96,9 +99,9 @@ function HeroSection() {
               }}
               className=" py-2 px-4 md:p-4  border-2 w-fit h-fit rounded-2xl flex items-center justify-around gap-2 cursor-pointer dark:bg-white bg-gray dark:text-gray text-white"
             >
-              Sign Up
+              <Link to="/signup">Sign Up</Link>
               <ArrowLongRightIcon className=" size-4.5 " />
-            </motion.div>
+            </motion.button>
           </motion.div>
         </div>
       </div>

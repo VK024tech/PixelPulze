@@ -13,10 +13,14 @@ const router = express.Router();
 router.post("/signup", async (req, res) => {
   const userEmail = req.body.email;
   const userPassword = req.body.password;
+  const firstName = req.body.firstName;
+  const lastName = req.body.lastName;
 
   const { data, error } = await supabase.auth.signUp({
     email: userEmail,
     password: userPassword,
+    firstName: firstName,
+    lastName: lastName,
   });
 
   if (error) {

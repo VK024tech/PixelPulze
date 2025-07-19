@@ -116,7 +116,7 @@ export default function Header() {
                 duration: "0.5",
                 ease: "backInOut",
               }}
-              className=" group px-4 icon-enter flex gap-3  w-full py-2.5 my-2 bg-gray text-white hover:text-brand ring-1 hover:ring-2 ring-brand hover:shadow-md/50 shadow-brand transition-all duration-300  rounded-2xl cursor-pointer"
+              className=" group px-4 icon-enter flex gap-3  w-full py-2.5 my-2 bg-gray  text-white hover:text-brand ring-1 hover:ring-2 ring-brand hover:shadow-md/50 shadow-brand transition-all duration-300  rounded-2xl cursor-pointer"
             >
               Get Started
               <ArrowLongRightIcon className="size-6 " />
