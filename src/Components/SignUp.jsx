@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { motion } from "motion/react";
 import { Link } from "react-router-dom";
 import z from "zod";
+import axios from "axios";
+
 
 function SignUp() {
   const [firstName, setFirstName] = useState("");
@@ -42,12 +44,23 @@ function SignUp() {
 
     console.log(userInfo);
     if (userInfo.success) {
-      const response = await axios.post();
+      const response = await axios.post("http://localhost:3200/user/signup", {
+        firstName: firstName,
+        lastName: lastName,
+        email: email,
+        password: password,
+      });
+
+      console.log(response);
     } else {
       console.log(userInfo.issues);
       setErrors(userInfo.error);
       return;
     }
+  }
+
+  async function google() {
+    window.location.href = "http://localhost:3200/user/Gsignup";
   }
 
   useEffect(() => {
@@ -153,7 +166,12 @@ function SignUp() {
           <span className="text-[10px] mx-1">OR</span>
           <hr className="w-full" />
         </div>
-        <div className="bg-white dark:bg-light-gray px-8 py-1 shadow-sm shadow-black/25 border-t-1 border-gray-100/20 rounded-xl  hover:text-brand  hover:ring-1 hover:ring-brand hover:shadow-md/50 hover:shadow-brand transition-all duration-300   cursor-pointer">
+        <div
+          onClick={() => {
+            google();
+          }}
+          className="bg-white dark:bg-light-gray px-8 py-1 shadow-sm shadow-black/25 border-t-1 border-gray-100/20 rounded-xl  hover:text-brand  hover:ring-1 hover:ring-brand hover:shadow-md/50 hover:shadow-brand transition-all duration-300   cursor-pointer"
+        >
           <img className="size-6" src="/g_icon.svg" alt="google login" />
         </div>
       </div>
