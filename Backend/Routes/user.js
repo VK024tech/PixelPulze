@@ -11,68 +11,104 @@ const supabase = createClient(
 const router = express.Router();
 
 router.post("/signup", async (req, res) => {
-  const userEmail = req.body.email;
-  const userPassword = req.body.password;
-  const firstName = req.body.firstName;
-  const lastName = req.body.lastName;
+  try {
+    const userEmail = req.body.email;
+    const userPassword = req.body.password;
+    const firstName = req.body.firstName;
+    const lastName = req.body.lastName;
 
-  const { data, error } = await supabase.auth.signUp({
-    email: userEmail,
-    password: userPassword,
-    options: {
-      shouldCreateSession: false,
-      emailRedirectTo: "http://localhost:5173/signin",
-      data: {
-        firstName: firstName,
-        lastName: lastName,
-        signUp_at: new Date().toISOString(),
+    const { data, error } = await supabase.auth.signUp({
+      email: userEmail,
+      password: userPassword,
+      options: {
+        shouldCreateSession: false,
+        emailRedirectTo: "http://localhost:5173/signin",
+        data: {
+          firstName: firstName,
+          lastName: lastName,
+          signUp_at: new Date().toISOString(),
+        },
       },
-    },
-  });
+    });
 
-  if (error) {
+    if (error) {
+      console.log(error);
+      res.status(400).json({
+        message: "Something Went worng! Please try again",
+        error: error,
+      });
+    }
+
+    res.status(201).json({
+      success: true,
+      message: "Signup successful. Please check your email to confirm.",
+    });
+  } catch (error) {
     console.log(error);
-  }
 
-  res.status(201).json({
-    success: true,
-    message: "Signup successful. Please check your email to confirm.",
-    data: data,
-  });
+    res.status(500).json({
+      message: "Servor error!",
+    });
+  }
 });
 
 router.get("/Gsignup", async (req, res) => {
-  const { data, error } = await supabase.auth.signInWithOAuth({
-    provider: "google",
-    options: {
-      redirectTo: "http://localhost:5173/redirect",
-      scopes: "email profile",
-    },
-  });
+  try {
+    const { data, error } = await supabase.auth.signInWithOAuth({
+      provider: "google",
+      options: {
+        redirectTo: "http://localhost:5173/redirect",
+        scopes: "email profile",
+      },
+    });
 
-  if (error) {
+    if (error) {
+      console.log(error);
+      res.status(400).json({
+        message: "Something Went worng! Please try again",
+        error: error,
+      });
+    }
+
+    return res.redirect(data.url);
+  } catch (error) {
     console.log(error);
+    res.status(500).json({
+      message: "Servor error!",
+    });
   }
-
-  return res.redirect(data.url);
 });
 
 router.post("/signin", async (req, res) => {
-  const userEmail = req.body.email;
-  const userPassword = req.body.password;
+  try {
+    const userEmail = req.body.email;
+    const userPassword = req.body.password;
 
-  const { data, error } = await supabase.auth.signInWithPassword({
-    email: userEmail,
-    password: userPassword,
-  });
+    const { data, error } = await supabase.auth.signInWithPassword({
+      email: userEmail,
+      password: userPassword,
+      options: {
+        redirectTo: "http://localhost:5173/redirect",
+      },
+    });
 
-  if (error) {
+    if (error) {
+      console.log(error);
+      res.status(400).json({
+        message: "Something Went worng! Please try again",
+        error: error,
+      });
+    }
+
+    res.status(201).json({
+      message: "Sign in successful!",
+    });
+  } catch (error) {
     console.log(error);
+    res.status(500).json({
+      message: "Servor error!",
+    });
   }
-
-  res.json({
-    data,
-  });
 });
 
 router.post("/signout", async (req, res) => {
