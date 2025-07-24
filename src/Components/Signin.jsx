@@ -21,6 +21,10 @@ function Signin() {
     }
   }
 
+  async function google() {
+    window.location.href = "http://localhost:3200/user/Gsignup";
+  }
+
   return (
     <div className=" text-gray dark:text-white  flex items-center justify-center   h-dvh">
       <div className="w-full md:w-xs h-full justify-center  md:h-fit flex flex-col border-1 border-gray-300 dark:border-none items-center rounded-md dark:shadow-sm/90 shadow-xl/30 dark:bg-gray p-5  bg-white  shadow-gray-500  ">
@@ -68,7 +72,12 @@ function Signin() {
           <span className="text-[10px] mx-1">OR</span>
           <hr className="w-full" />
         </div>
-        <div className="bg-white dark:bg-light-gray px-8 py-1 shadow-sm shadow-black/25 border-t-1 border-gray-100/20 rounded-xl  hover:text-brand  hover:ring-1 hover:ring-brand hover:shadow-md/50 hover:shadow-brand transition-all duration-300   cursor-pointer">
+        <div
+          onClick={() => {
+            google();
+          }}
+          className="bg-white dark:bg-light-gray px-8 py-1 shadow-sm shadow-black/25 border-t-1 border-gray-100/20 rounded-xl  hover:text-brand  hover:ring-1 hover:ring-brand hover:shadow-md/50 hover:shadow-brand transition-all duration-300   cursor-pointer"
+        >
           <img className="size-6" src="/g_icon.svg" alt="google login" />
         </div>
       </div>

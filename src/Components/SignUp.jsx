@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import z from "zod";
 import axios from "axios";
 
-
 function SignUp() {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -13,6 +12,17 @@ function SignUp() {
   const [confirmPassword, setConfirmPassword] = useState("");
 
   const [errors, setErrors] = useState(null);
+
+  const [response, setResponse] = useState();
+  const [loading, setLoading] = useState(false);
+
+  function initialize() {
+    setConfirmPassword("");
+    setPassword("");
+    setEmail("");
+    setFirstName("");
+    setLastName("");
+  }
 
   const validationScehema = z
     .object({
@@ -42,8 +52,8 @@ function SignUp() {
       confirmPassword,
     });
 
-    console.log(userInfo);
     if (userInfo.success) {
+      setLoading(true);
       const response = await axios.post("http://localhost:3200/user/signup", {
         firstName: firstName,
         lastName: lastName,
@@ -51,7 +61,8 @@ function SignUp() {
         password: password,
       });
 
-      console.log(response);
+      setResponse(response.data.message);
+      setLoading(false);
     } else {
       console.log(userInfo.issues);
       setErrors(userInfo.error);
@@ -81,6 +92,13 @@ function SignUp() {
             Sign In
           </Link>
         </p>
+        <div
+          className={`${
+            response ? "text-green-400" : "text-red-400"
+          } text-sm text-center pb-2 `}
+        >
+          {response}
+        </div>
         <div className="flex w-full flex-col gap-3 mb-2">
           <input
             onChange={(e) => {
@@ -154,10 +172,14 @@ function SignUp() {
           />
         </div>
         <button
+          type="button"
+          disabled={loading ? true : false}
           onClick={() => {
             signUp();
           }}
-          className="rounded-md mt-4 p-1 outline-none  w-full  border-2  cursor-pointer bg-gray dark:bg-white text-white dark:text-gray "
+          className={`rounded-md mt-4 p-1 outline-none  w-full  border-2     text-white dark:text-gray  ${
+            loading ? " dark:bg-gray-600 " : "dark:bg-white cursor-pointer"
+          } `}
         >
           Sign Up
         </button>

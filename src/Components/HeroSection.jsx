@@ -9,8 +9,6 @@ function HeroSection() {
   const { windowWidth } = useContext(ThemeContext);
   const { demo, setDemo } = useContext(ThemeContext);
 
-
-
   return (
     <div id="Home" className="">
       <div className={` ${windowWidth < 800 ? "h-0" : "h-20"}`}></div>
@@ -83,7 +81,7 @@ function HeroSection() {
                 translateY: "-10px",
               }}
               transition={{
-                duration: 0.15,
+                duration: 0.1,
               }}
               className=" py-2 px-4 md:p-4 border-2 w-fit h-fit rounded-2xl flex items-center justify-around gap-2 cursor-pointer"
             >
@@ -95,7 +93,7 @@ function HeroSection() {
                 translateY: "-10px",
               }}
               transition={{
-                duration: 0.15,
+                duration: 0.1,
               }}
               className=" py-2 px-4 md:p-4  border-2 w-fit h-fit rounded-2xl flex items-center justify-around gap-2 cursor-pointer dark:bg-white bg-gray dark:text-gray text-white"
             >

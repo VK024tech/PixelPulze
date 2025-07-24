@@ -34,19 +34,22 @@ router.post("/signup", async (req, res) => {
     if (error) {
       console.log(error);
       res.status(400).json({
+        success: false,
         message: "Something Went worng! Please try again",
         error: error,
       });
+      return
     }
 
     res.status(201).json({
       success: true,
-      message: "Signup successful. Please check your email to confirm.",
+      message: "Confirmation email sent! Please check your email to confirm.",
     });
   } catch (error) {
     console.log(error);
 
     res.status(500).json({
+      success: false,
       message: "Servor error!",
     });
   }
