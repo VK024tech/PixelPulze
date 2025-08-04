@@ -8,14 +8,14 @@ const replicate = new Replicate({
 
 export async function createImage(userprompt) {
   const input = {
-    prompt: userprompt,
-    go_fast: true,
-    megapixels: "1",
-    num_outputs: 1,
-    aspect_ratio: "1:1",
-    output_format: "webp",
-    output_quality: 80,
-    num_inference_steps: 4,
+    prompt: userprompt.text,
+    go_fast: userprompt.goFast ? userprompt.goFast : true,
+    megapixels: userprompt.megaPixels,
+    num_outputs: userprompt.numOutputs,
+    aspect_ratio: userprompt.aspectRatio,     
+    output_format: userprompt.outputFormat,
+    output_quality: userprompt.outputQuality,
+    num_inference_steps: userprompt.inferenceSteps,
   };
 
   const output = await replicate.run("black-forest-labs/flux-schnell", {

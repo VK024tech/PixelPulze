@@ -127,6 +127,9 @@ router.post("/signout", async (req, res) => {
 });
 
 router.get("/gen", async (req, res) => {
+
+  
+
   const response = await createImage(req.body.prompt);
 
   res.json({
