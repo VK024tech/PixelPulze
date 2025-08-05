@@ -6,18 +6,22 @@ import {
   SunIcon,
   PhotoIcon,
   ArrowLeftStartOnRectangleIcon,
+  CircleStackIcon,
+  PlusCircleIcon,
 } from "@heroicons/react/24/outline";
 
 import { ThemeContext } from "../../Contexts/theme";
 
 export default function DashboardHeader() {
-  const { theme, setTheme, headerHeight, setHeaderHeight, homeHeaderRef } = useContext(ThemeContext);
+  const { theme, setTheme, headerHeight, setHeaderHeight, homeHeaderRef } =
+    useContext(ThemeContext);
   const navOption = ["txt2img"];
- 
+
   const [modelType, setModelType] = useState("text2img");
 
   useEffect(() => {
-    const heightheader = window.innerHeight - homeHeaderRef.current.offsetHeight;
+    const heightheader =
+      window.innerHeight - homeHeaderRef.current.offsetHeight;
 
     setHeaderHeight(`h-[${heightheader}px]`);
   }, []);
@@ -55,8 +59,13 @@ export default function DashboardHeader() {
         </div>
 
         <div className="mx-2 flex gap-2 items-center ">
+          <div className="py-1 rounded-xl px-2 flex items-center border-1  bg-green-400/80">
+            <CircleStackIcon className="size-6   z-10  " />
+            <div className="text-xs px-2">Token: 32</div>
+            <PlusCircleIcon className="size-6 cursor-pointer hover:rotate-180 transition-all duration-150 ease-in-out text-green-800 z-10  " />
+          </div>
           <div className="group relative py-2 px-4 cursor-pointer  rounded-md">
-            <PhotoIcon ref={ref} className="size-6 relative z-10" />
+            <PhotoIcon className="size-6 relative z-10" />
             <span className="absolute inset-0 scale-0 opacity-20 dark:bg-buttonBg-dark bg-buttonBg-light rounded-lg transition-all duration-300 ease-out group-hover:opacity-100 group-hover:scale-100 origin-center"></span>
           </div>
 

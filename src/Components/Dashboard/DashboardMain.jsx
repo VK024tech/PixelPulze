@@ -5,7 +5,7 @@ import PromptImage from "./promptImage";
 
 function DashboarMain() {
   return (
-    <div className="text-gray dark:text-white dark:bg-black bg-pale-white w-screen h-screen">
+    <div className="text-gray  dark:text-white dark:bg-black bg-pale-white w-screen h-screen">
       <DashboardHeader />
       <div className="flex">
         <Sidepanel />
