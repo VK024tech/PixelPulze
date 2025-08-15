@@ -6,6 +6,8 @@ const ThemeContext = createContext();
 const ThemeContextProvider = ({ children }) => {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [demo,setDemo] = useState(false)
+  const homeHeaderRef = useRef()
+  const [headerHeight, setHeaderHeight] = useState("")
 
   /////////////////////resize width//////////////////////////
   const handleResize = () => {
@@ -84,7 +86,10 @@ const ThemeContextProvider = ({ children }) => {
     ref,
     toggleDarkMode,
     demo,
-    setDemo
+    setDemo,
+    headerHeight,
+    setHeaderHeight,
+    homeHeaderRef
   };
 
   return (
