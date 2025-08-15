@@ -38,7 +38,7 @@ router.post("/signup", async (req, res) => {
         message: "Something Went worng! Please try again",
         error: error,
       });
-      return
+      return;
     }
 
     res.status(201).json({
@@ -86,6 +86,7 @@ router.post("/signin", async (req, res) => {
   try {
     const userEmail = req.body.email;
     const userPassword = req.body.password;
+    
 
     const { data, error } = await supabase.auth.signInWithPassword({
       email: userEmail,
@@ -96,16 +97,16 @@ router.post("/signin", async (req, res) => {
     });
 
     if (error) {
-      console.log(error);
+      console.log(error.message);
       res.status(400).json({
-        message: "Something Went worng! Please try again",
-        error: error,
+        message: error.message,
+      });
+      return
+    } else {
+      res.status(201).json({
+        message: "Sign in successful!",
       });
     }
-
-    res.status(201).json({
-      message: "Sign in successful!",
-    });
   } catch (error) {
     console.log(error);
     res.status(500).json({

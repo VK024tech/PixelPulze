@@ -54,18 +54,22 @@ function SignUp() {
 
     if (userInfo.success) {
       setLoading(true);
-      const response = await axios.post("http://localhost:3200/user/signup", {
-        firstName: firstName,
-        lastName: lastName,
-        email: email,
-        password: password,
-      });
+      const serverResponse = await axios.post(
+        "http://localhost:3200/user/signup",
+        {
+          firstName: firstName,
+          lastName: lastName,
+          email: email,
+          password: password,
+        }
+      );
 
-      setResponse(response.data.message);
+      setResponse(serverResponse.data.message);
       setLoading(false);
     } else {
       console.log(userInfo.issues);
       setErrors(userInfo.error);
+      setLoading(false);
       return;
     }
   }

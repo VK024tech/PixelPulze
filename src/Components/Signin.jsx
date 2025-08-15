@@ -1,29 +1,52 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import z from "zod";
 
 function Signin() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [errors, setErrors] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [response, setResponse] = useState();
+  const validationScehema = z.object({
+    email: z.email({ message: "Invalid email address." }),
+    password: z.string().min(8, { message: "Must be at least 8 characters." }),
+  });
 
-  async function signIn() {
-    if (email && password) {
-      const response = await axios.post("http://localhost:3200/user/signin", {
-        email: email,
-        password: password,
-      });
+  async function userSignIn() {
+    const userInfo = validationScehema.safeParse({
+      email,
+      password,
+    });
 
-      console.log(response);
+    if (userInfo.success) {
+      setLoading(true);
+      const serverResponse = await axios.post(
+        "http://localhost:3200/user/signin",
+        {
+          email: email,
+          password: password,
+        }
+      );
+
+      setResponse(serverResponse.data.message);
+      setLoading(false);
     } else {
       console.log(userInfo.issues);
       setErrors(userInfo.error);
+      setLoading(false);
       return;
+    }
+
+    async function google() {
+      window.location.href = "http://localhost:3200/user/Gsignup";
     }
   }
 
-  async function google() {
-    window.location.href = "http://localhost:3200/user/Gsignup";
-  }
+  useEffect(() => {
+    setErrors();
+  }, [email, password]);
 
   return (
     <div className=" text-gray dark:text-white  flex items-center justify-center   h-dvh">
@@ -39,13 +62,24 @@ function Signin() {
             Sign Up
           </Link>
         </p>
+        <div
+          className={`${
+            response ? "text-green-400" : "text-red-400"
+          } text-sm text-center pb-2 `}
+        >
+          {response}
+        </div>
         <div className="flex w-full flex-col gap-3 mb-2">
           <input
             onChange={(e) => {
               setEmail(e.target.value);
             }}
             value={email}
-            className="dark:bg-gray-950 outline-none  placeholder:text-sm placeholder:pl-1 placeholder:text-gray-500 rounded-md border-1 border-gray-400 dark:border-gray-800  py-1 px-2 "
+            className={`dark:bg-gray-950 ${
+              errors?.issues.find((index) => index.path.includes("email"))
+                ? "outline-1 outline-red-400"
+                : "outline-none"
+            }  placeholder:text-sm placeholder:pl-1 placeholder:text-gray-500 rounded-md border-1 border-gray-400 dark:border-gray-800  py-1 px-2 `}
             type="email"
             placeholder="Email"
           />
@@ -54,16 +88,24 @@ function Signin() {
               setPassword(e.target.value);
             }}
             value={password}
-            className="dark:bg-gray-950 outline-none  placeholder:text-sm placeholder:pl-1 placeholder:text-gray-500 rounded-md border-1 border-gray-400 dark:border-gray-800  py-1 px-2 "
+            className={`dark:bg-gray-950 ${
+              errors?.issues.find((index) => index.path.includes("password"))
+                ? "outline-1 outline-red-400"
+                : "outline-none"
+            }  placeholder:text-sm placeholder:pl-1 placeholder:text-gray-500 rounded-md border-1 border-gray-400 dark:border-gray-800  py-1 px-2 `}
             type="password"
             placeholder="Password"
           />
         </div>
         <button
+          type="button"
+          disabled={loading ? true : false}
           onClick={() => {
-            signIn();
+            userSignIn();
           }}
-          className="rounded-md mt-4 p-1 outline-none  w-full  border-2  cursor-pointer bg-gray dark:bg-white text-white dark:text-gray "
+          className={`rounded-md mt-4 p-1 outline-none  w-full  border-2     text-white dark:text-gray  ${
+            loading ? " dark:bg-gray-600 " : "dark:bg-white cursor-pointer"
+          } `}
         >
           Sign In
         </button>
@@ -78,7 +120,7 @@ function Signin() {
           }}
           className="bg-white dark:bg-light-gray px-8 py-1 shadow-sm shadow-black/25 border-t-1 border-gray-100/20 rounded-xl  hover:text-brand  hover:ring-1 hover:ring-brand hover:shadow-md/50 hover:shadow-brand transition-all duration-300   cursor-pointer"
         >
-          <img className="size-6" src="/g_icon.svg" alt="google login" />
+          <img className="size-6" src="/g_icon.svg" alt="google_login" />
         </div>
       </div>
     </div>
