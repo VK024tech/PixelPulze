@@ -5,9 +5,19 @@ const ThemeContext = createContext();
 
 const ThemeContextProvider = ({ children }) => {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-  const [demo,setDemo] = useState(false)
-  const homeHeaderRef = useRef()
-  const [headerHeight, setHeaderHeight] = useState("")
+  const [demo, setDemo] = useState(false);
+  const homeHeaderRef = useRef();
+  const [headerHeight, setHeaderHeight] = useState("");
+
+  const [aRatio, setARatio] = useState("1:1");
+  const [format, setFormat] = useState("jpg");
+  const [numImages, setNumImages] = useState(1);
+  const [denoisingSteps, setDenoisingSteps] = useState(4);
+  const [seed, setSeed] = useState("");
+  const [outputQuality, setOutputQuality] = useState(80);
+  const [disableSafetyChecker, setDisableSafetyChecker] = useState(false);
+  const [goFast, setGoFast] = useState(true);
+  const [prompt, setPrompt] = useState("");
 
   /////////////////////resize width//////////////////////////
   const handleResize = () => {
@@ -89,7 +99,25 @@ const ThemeContextProvider = ({ children }) => {
     setDemo,
     headerHeight,
     setHeaderHeight,
-    homeHeaderRef
+    homeHeaderRef,
+    aRatio,
+    setARatio,
+    format,
+    setFormat,
+    numImages,
+    setNumImages,
+    denoisingSteps,
+    setDenoisingSteps,
+    seed,
+    setSeed,
+    outputQuality,
+    setOutputQuality,
+    disableSafetyChecker,
+    setDisableSafetyChecker,
+    goFast,
+    setGoFast,
+    prompt,
+    setPrompt,
   };
 
   return (

@@ -2,6 +2,7 @@ import express from "express";
 import { createClient } from "@supabase/supabase-js";
 import "dotenv/config";
 import { createImage } from "../services/imageGenerate.js";
+import { data } from "react-router-dom";
 
 const supabase = createClient(
   process.env.SUPABASE_URL,
@@ -86,7 +87,6 @@ router.post("/signin", async (req, res) => {
   try {
     const userEmail = req.body.email;
     const userPassword = req.body.password;
-    
 
     const { data, error } = await supabase.auth.signInWithPassword({
       email: userEmail,
@@ -101,7 +101,7 @@ router.post("/signin", async (req, res) => {
       res.status(400).json({
         message: error.message,
       });
-      return
+      return;
     } else {
       res.status(201).json({
         message: "Sign in successful!",
@@ -127,14 +127,11 @@ router.post("/signout", async (req, res) => {
   });
 });
 
-router.get("/gen", async (req, res) => {
-
-  
-
-  const response = await createImage(req.body.prompt);
-
+router.post("/gen", async (req, res) => {
+  const response = await createImage(req.body);
+  console.log("Image generation response:", response);
   res.json({
-    msg: response,
+    data: response,
   });
 });
 
