@@ -15,26 +15,34 @@ function PromptImage() {
   const [apiCall, setApiCall] = useState(false);
   const [imageSrc, setImageSrc] = useState([]);
   const [fullScreenUrl, setFullScreenUrl] = useState("");
+  const [imageLoaded, setImageLoaded] = useState(false);
 
   async function imageCreate() {
-    setApiCall(true);
-    setImageSrc([]);
-    const response = await generateImage(
-      prompt,
-      aRatio,
-      format,
-      numImages,
-      denoisingSteps,
-      seed,
-      outputQuality,
-      disableSafetyChecker,
-      goFast
-    );
-    console.log("Image generated:", response.data);
-
-    setImageSrc(response.data);
-    setPrompt("");
-    setApiCall(false);
+    try {
+      const tempPrompt = prompt;
+      setPrompt("");
+      setApiCall(true);
+      setImageLoaded(false);
+      setImageSrc([]);
+      const response = await generateImage(
+        tempPrompt,
+        aRatio,
+        format,
+        numImages,
+        denoisingSteps,
+        seed,
+        outputQuality,
+        disableSafetyChecker,
+        goFast
+      );
+      setImageSrc(response.data);
+      setApiCall(false);
+    } catch (error) {
+      console.error("Error generating image:", error);
+      setApiCall(false);
+      setImageSrc([]);
+      alert("Failed to generate image. Please try again.");
+    }
   }
 
   function downloadImage(imageSrc) {
@@ -108,7 +116,7 @@ function PromptImage() {
   }
 
   function showImage() {
-    if (imageSrc) {
+    if (imageSrc.length > 0) {
       let gridopt = "";
 
       if (imageSrc.length === 2) {
@@ -141,6 +149,7 @@ function PromptImage() {
                 <img
                   src={image.url}
                   alt="Generated"
+                  onLoad={() => setImageLoaded(true)}
                   className={`w-full  rounded-md object-cover ${
                     fixHeight ? "h-70" : " max-h-[70dvh]"
                   } `}
@@ -165,7 +174,7 @@ function PromptImage() {
           })}
         </div>
       );
-    } else if (apiCall) {
+    } else if (apiCall && !imageLoaded) {
       return (
         <div className="relative  mx-auto ">
           <div
