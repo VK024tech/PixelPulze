@@ -159,12 +159,12 @@ function PromptImage() {
                   <span className="text-gray-100  hidden group-hover:inline">
                     Download
                   </span>
-
                   <ArrowDownTrayIcon
                     title="Download"
                     onClick={(e) => {
                       e.stopPropagation();
-                      downloadImage(imageSrc);
+
+                      downloadImage(image.url);
                     }}
                     className="size-6  text-gray-200 group-hover:text-gray-100   "
                   />
@@ -225,9 +225,9 @@ function PromptImage() {
           onClick={() => {
             prompt && !apiCall ? imageCreate() : null;
           }}
-          className="dark:bg-gray-600 w-fit ml-auto mr-4 p-1 rounded-full absolute bottom-2 right-1 cursor-pointer"
+          className="bg-green-400 w-fit ml-auto mr-4 p-1 rounded-full absolute bottom-2 right-1 cursor-pointer"
         >
-          <ArrowRightIcon className="size-6   z-10    " />
+          <ArrowRightIcon className="size-6 z-10  text-white" />
         </div>
       </div>
       {fullScreenUrl && fullscreen(fullScreenUrl)}

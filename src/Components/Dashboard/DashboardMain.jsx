@@ -4,7 +4,7 @@ import DashboardHeader from "./DashboardHeader";
 import PromptImage from "./promptImage";
 import { ThemeContext } from "../../Contexts/theme";
 
-function DashboarMain() {
+function DashboardMain() {
   const { headerHeight } = useContext(ThemeContext);
 
   return (
@@ -14,7 +14,6 @@ function DashboarMain() {
       <div className={`fixed top-0 left-0 w-full z-10 ${headerHeight}`}>
         <DashboardHeader />
       </div>
-
       <div className={`flex h-dvh `}>
         <Sidepanel />
         <PromptImage />
@@ -23,4 +22,4 @@ function DashboarMain() {
   );
 }
 
-export default DashboarMain;
+export default DashboardMain;
